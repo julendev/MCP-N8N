@@ -6,6 +6,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// 🔐 Middleware de autenticación
+app.use((req, res, next) => {
+  const auth = req.headers.authorization;
+  if (auth !== `Bearer ${process.env.MCP_TOKEN}`) {
+    return res.status(401).json({ error: 'Unauthorized' });
+  }
+  next();
+});
+
 // Ruta principal del MCP
 app.post('/mcp/decide', async (req, res) => {
   const input = req.body;
