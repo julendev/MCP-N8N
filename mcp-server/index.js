@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
-const tools = require('./tools/tools.json');
+const path = require('path');
+require('dotenv').config();
+
+const crearOferta = require('./tools/crear_oferta');
+const modificarOferta = require('./tools/modificar_oferta');
 
 const app = express();
 app.use(cors());
@@ -15,35 +19,16 @@ app.use((req, res, next) => {
   next();
 });
 
-// Ruta principal del MCP
-app.post('/mcp/decide', async (req, res) => {
-  const input = req.body;
-
-  // Recorremos herramientas y validamos requisitos
-  for (const tool of tools) {
-    const { name, requiredFields, webhook } = tool;
-    const missing = requiredFields.filter(field => !(field in input));
-
-    if (missing.length === 0) {
-      // Disparamos webhook con input
-      try {
-        const response = await fetch(webhook, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(input),
-        });
-
-        const data = await response.json();
-        return res.json({ status: 'ok', ejecutado: name, respuesta: data });
-      } catch (err) {
-        return res.status(500).json({ status: 'error', error: err.message });
-      }
-    }
-  }
-
-  res.status(400).json({ status: 'error', mensaje: 'No se encontró ninguna herramienta compatible con este input.' });
+// 📦 Endpoint para consultar herramientas
+app.get('/tools', (req, res) => {
+  res.sendFile(path.join(__dirname, 'tools/tools.json'));
 });
 
+// 🚀 Endpoints para herramientas
+app.post('/tools/crear_oferta', crearOferta);
+app.post('/tools/modificar_oferta', modificarOferta);
+
+// 🟢 Arranque del servidor
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ MCP corriendo en http://localhost:${PORT}`);
