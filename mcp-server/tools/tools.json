@@ -1,0 +1,14 @@
+[
+  {
+    "name": "crear_oferta",
+    "description": "Crea una oferta nueva para un cliente sin contrato",
+    "requires": ["cliente_id", "productos"],
+    "webhook": "https://n8n.example.com/webhook/crear-oferta"
+  },
+  {
+    "name": "modificar_oferta",
+    "description": "Modifica una oferta de un cliente con contrato vigente",
+    "requires": ["cliente_id", "cambios"],
+    "webhook": "https://n8n.example.com/webhook/modificar-oferta"
+  }
+]
