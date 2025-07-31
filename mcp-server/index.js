@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const tools = require('./utils/tools.json');
+const tools = require('./tools/tools.json');
 
 const app = express();
 app.use(cors());
