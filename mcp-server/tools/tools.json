@@ -1,14 +1,44 @@
 [
   {
     "name": "crear_oferta",
-    "description": "Crea una o más ofertas para uno o varios clientes. Espera un array en el campo 'ofertas' con los datos de cada una.",
-    "requires": "email",
+    "description": "Crea una o más ofertas nuevas para un cliente sin contrato o existente. Se requiere un campo global 'contexto', y un array llamado 'ofertas' con los campos específicos por cada una.",
+    "requires": ["contexto", "ofertas"],
+    "structure": {
+      "ofertas": {
+        "requires": ["cliente", "Tipo"],
+        "optional": [
+          "Address",
+          "modelo",
+          "TimeSubscription",
+          "Edicion",
+          "buses",
+          "productos",
+          "qty",
+          "preguntas"
+        ]
+      }
+    },
     "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Crear"
   },
   {
     "name": "modificar_oferta",
     "description": "Modifica una oferta de un cliente con contrato vigente",
-    "requires": "email",
+    "requires": ["contexto", "ofertas"],
+      "structure": {
+      "ofertas": {
+        "requires": ["cliente", "Tipo"],
+        "optional": [
+          "Address",
+          "modelo",
+          "TimeSubscription",
+          "Edicion",
+          "buses",
+          "productos",
+          "qty",
+          "preguntas"
+        ]
+      }
+    },
     "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Modify"
   }
 ]
