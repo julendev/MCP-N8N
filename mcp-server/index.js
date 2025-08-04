@@ -12,6 +12,7 @@ app.use(express.json());
 
 // 🔐 Middleware de autenticación
 app.use((req, res, next) => {
+  console.log("MCP_TOKEN ACTUAL:", process.env.MCP_TOKEN);
   const auth = req.headers.authorization;
   if (auth !== `Bearer ${process.env.MCP_TOKEN}`) {
     return res.status(401).json({ error: 'Unauthorized' });
