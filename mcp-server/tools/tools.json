@@ -1,25 +1,24 @@
 [
-{
-  "name": "crear_oferta",
-  "description": "Crea una nueva oferta nueva para un cliente sin contrato, o crea nueva oferta de un cliente ya existente",
-  "requires": [
-    "contexto",
-    "cliente",
-    "Tipo"
-  ],
-  "optional": [
-    "Address",
-    "modelo",
-    "TimeSubscription",
-    "Edicion",
-    "buses",
-    "productos",
-    "qty",
-    "preguntas"
-  ],
-  "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Crear"
-}
-
+  {
+    "name": "crear_oferta",
+    "description": "Crea una nueva oferta nueva para un cliente sin contrato, o crea nueva oferta de un cliente ya existente",
+    "requires": [
+      "contexto",
+      "cliente",
+      "Tipo"
+    ],
+    "optional": [
+      "Address",
+      "modelo",
+      "TimeSubscription",
+      "Edicion",
+      "buses",
+      "productos",
+      "qty",
+      "preguntas"
+    ],
+    "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Crear"
+  },
   {
     "name": "modificar_oferta",
     "description": "Modifica una oferta de un cliente con contrato vigente",
