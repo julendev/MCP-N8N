@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
+const toolsJson = require('./tools/tools.json');
 
 const crearOferta = require('./tools/crear_oferta');
 const modificarOferta = require('./tools/modificar_oferta');
@@ -26,7 +27,7 @@ app.use((req, res, next) => {
 
 // 📦 Endpoint para consultar herramientas
 app.get('/tools', (req, res) => {
-  res.sendFile(path.join(__dirname, 'tools/tools.json'));
+  res.json(toolsJson);
 });
 
 // 🚀 Endpoints para herramientas
