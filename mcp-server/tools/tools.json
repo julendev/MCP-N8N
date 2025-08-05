@@ -5,9 +5,11 @@
     "requires": ["contexto", "ofertas"],
     "structure": {
       "ofertas": {
-        "requires": ["cliente", "Tipo"],
+        "requires": ["cliente"],
         "optional": [
           "Address",
+          "Tipo",
+          "Contract ID",
           "modelo",
           "TimeSubscription",
           "Edicion",
