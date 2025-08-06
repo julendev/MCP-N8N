@@ -5,10 +5,9 @@
     "requires": ["contexto", "ofertas"],
     "structure": {
       "ofertas": {
-        "requires": ["cliente"],
+        "requires": ["cliente", "Tipo"],
         "optional": [
           "Address",
-          "Tipo",
           "Contract ID",
           "modelo",
           "TimeSubscription",
@@ -20,7 +19,7 @@
         ]
       }
     },
-    "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Crear"
+    "webhook": "https://digsilent.app.n8n.cloud/webhook/Crear"
   },
   {
     "name": "modificar_oferta",
