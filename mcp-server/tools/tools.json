@@ -19,7 +19,7 @@
         ]
       }
     },
-    "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Crear"
+    "webhook": "https://digsilent.app.n8n.cloud/webhook/Crear"
   },
   {
   "name": "upgrade_oferta",
@@ -40,13 +40,13 @@
       ]
     }
   },
-  "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Upgrade"
+  "webhook": "https://digsilent.app.n8n.cloud/webhook/Upgrade"
 },
     {
   "name": "reply-email",
   "description": "Tras finalizar la tarea pedida, contesta al correo",
   "requires": ["conversationid"],
-  "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Reply"
+  "webhook": "https://digsilent.app.n8n.cloud/webhook/Reply"
 },
   {
     "name": "modificar_oferta",
