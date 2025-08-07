@@ -41,8 +41,7 @@
     }
   },
   "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Upgrade"
-}
-
+},
   {
     "name": "modificar_oferta",
     "description": "Modifica una oferta de un cliente con contrato vigente",
