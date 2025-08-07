@@ -42,6 +42,12 @@
   },
   "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Upgrade"
 },
+    {
+  "name": "reply-email",
+  "description": "Tras finalizar la tarea pedida, contesta al correo",
+  "requires": ["conversationid"],
+  "webhook": "https://digsilent.app.n8n.cloud/webhook-test/Reply"
+},
   {
     "name": "modificar_oferta",
     "description": "Modifica una oferta de un cliente con contrato vigente",
