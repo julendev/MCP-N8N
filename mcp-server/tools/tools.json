@@ -2,7 +2,7 @@
   {
     "name": "crear_oferta",
     "description": "Crea una o más ofertas nuevas para un cliente sin contrato o existente. Se requiere un campo global 'contexto', y un array llamado 'ofertas' con los campos específicos por cada una.",
-    "requires": ["ofertas", "conversationid"],
+    "requires": ["ofertas"],
     "structure": {
       "ofertas": {
         "requires": ["cliente", "Tipo"],
@@ -24,7 +24,7 @@
   {
   "name": "upgrade_oferta",
   "description": "Realiza una ampliación o mejora de una oferta ya existente para un cliente con contrato activo. Ideal para upgrades de edición, más nodos o funcionalidades.",
-  "requires": ["ofertas","conversationid"],
+  "requires": ["ofertas"],
   "structure": {
     "ofertas": {
       "requires": ["cliente", "Tipo", "Contract ID"],
