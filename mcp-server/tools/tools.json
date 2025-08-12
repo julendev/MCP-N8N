@@ -18,7 +18,7 @@
       "productos": {
         "type": "array",
         "element": {
-          "requires": ["item", "qty"],
+          "requires": ["producto", "qty"],
           "optional": []
         }
       }
