@@ -1,7 +1,7 @@
 [
 {
   "name": "crear_oferta",
-  "description": "Crea una o más ofertas nuevas para un cliente sin contrato o existente. Se requiere un campo global 'cliente' y un array llamado 'ofertas' con los campos específicos por cada una.",
+  "description": "Crea una o más ofertas nuevas. Se te pasará el cliente, el tipo, y los productos, crea una oferta Array de ofertas incluyendo los campos globales en cada una",
   "requires": ["cliente", "ofertas"],
   "optional": ["Address"],
   "structure": {
