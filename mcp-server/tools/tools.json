@@ -11,7 +11,7 @@
         "modelo",
         "TimeSubscription",
         "Edicion",
-        "buses",
+        "Nodos",
         "preguntas"
       ],
       "productos": {
@@ -37,7 +37,7 @@
         "modelo",
         "TimeSubscription",
         "Edicion",
-        "buses",
+        "Nodos",
         "preguntas"
       ],
       "productos": {
@@ -69,7 +69,7 @@
           "modelo",
           "TimeSubscription",
           "Edicion",
-          "buses",
+          "Nodos",
           "productos",
           "qty",
           "preguntas"
