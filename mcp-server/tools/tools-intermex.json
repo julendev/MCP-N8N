@@ -1,20 +1,20 @@
 [
-{
-  "name": "new_order",
-  "description": "Recibes un pedido por correo y tu tarea es ejecutarlo",
-  "requires": ["conversationid"],
-  "webhook": "https://neuralq.app.n8n.cloud/webhook/Intermex/New-Offer"
-},
-{
-  "name": "record_payment",
-  "description": "Se requiere ",
-  "requires": ["ofertas"],
-  "webhook": "https://neuralq.app.n8n.cloud/webhook/Intermex/RecordPayment"
-},
-    {
-  "name": "reply-email",
-  "description": "Tras finalizar la tarea pedida, contesta al correo",
-  "requires": ["conversationid"],
-  "webhook": "https://digsilent.app.n8n.cloud/webhook/Reply"
-},
+  {
+    "name": "new_order",
+    "description": "Recibes un pedido por correo y tu tarea es ejecutarlo",
+    "requires": ["conversationid"],
+    "webhook": "https://neuralq.app.n8n.cloud/webhook/Intermex/New-Offer"
+  },
+  {
+    "name": "record_payment",
+    "description": "Se requiere ",
+    "requires": ["ofertas"],
+    "webhook": "https://neuralq.app.n8n.cloud/webhook/Intermex/RecordPayment"
+  },
+  {
+    "name": "reply-email",
+    "description": "Tras finalizar la tarea pedida, contesta al correo",
+    "requires": ["conversationid"],
+    "webhook": "https://neuralq.app.n8n.cloud/webhook/Intermex/RecordPayment"
+  }
 ]
