@@ -1,36 +1,52 @@
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
-const toolsJson = require('./tools/tools.json');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// 🔐 Middleware de autenticación
+// 🔐 Auth
 app.use((req, res, next) => {
   const auth = req.headers.authorization?.trim();
   const token = `Bearer ${process.env.MCP_TOKEN?.trim()}`;
-  
-  console.log("==> TOKEN RECIBIDO:", auth);
-  console.log("==> TOKEN ESPERADO:", token);
-
-  if (auth !== token) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  if (auth !== token) return res.status(401).json({ error: 'Unauthorized' });
   next();
 });
 
-// 📦 Endpoint para consultar herramientas
+// 🧠 util: carga tools.json según cliente
+function loadTools(client) {
+  // admite header x-client o ?client=
+  const name = (client || 'default').replace(/[^a-z0-9-_]/gi, '');
+  const candidates = [
+    path.join(__dirname, 'tools', `tools-${name}.json`),
+    path.join(__dirname, 'tools', 'tools.json'), // fallback
+  ];
+  for (const file of candidates) {
+    if (fs.existsSync(file)) {
+      const raw = fs.readFileSync(file, 'utf-8');
+      return JSON.parse(raw);
+    }
+  }
+  throw new Error('No tools.json found');
+}
+
+// 📦 GET /tools => devuelve el fichero del cliente
 app.get('/tools', (req, res) => {
-  res.json(toolsJson);
+  try {
+    const client = req.headers['x-client'] || req.query.client;
+    const tools = loadTools(client);
+    res.json(tools);
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
 });
 
-// 🚀 Endpoint dinámico para ejecutar tools
+// 🚀 POST /run => ejecuta tool local (no depende del JSON)
 app.post('/run', async (req, res) => {
   const { tool, input } = req.body;
-
   try {
     const toolFn = require(`./tools/${tool}.js`);
     const output = await toolFn(input);
@@ -40,8 +56,5 @@ app.post('/run', async (req, res) => {
   }
 });
 
-// 🟢 Arranque del servidor
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`✅ MCP corriendo en http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`✅ MCP en http://localhost:${PORT}`));
