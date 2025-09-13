@@ -7,8 +7,8 @@
   },
   {
     "name": "record_payment",
-    "description": "Se requiere ",
-    "requires": ["ofertas"],
+    "description": "Esta herramienta es cuando se recibe una lista de facturas pagadas, sirve para hacer record payments  ",
+    "requires": ["conversationid"],
     "webhook": "https://neuralq.app.n8n.cloud/webhook/Intermex/RecordPayment"
   },
   {
