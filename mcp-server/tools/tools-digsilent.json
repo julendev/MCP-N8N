@@ -61,10 +61,10 @@
   {
     "name": "modificar_mantenimiento",
     "description": "Modifica una oferta de mantenimiento de un cliente con contrato vigente",
-    "requires": ["ofertas", "conversationid"],
+    "requires": ["ofertas", "offerid", "conversationid"],
       "structure": {
       "ofertas": {
-        "requires": ["cliente", "Tipo"],
+        "requires": ["productos"],
         "optional": [
           "Address",
           "modelo",
@@ -72,9 +72,15 @@
           "Edicion",
           "Nodos",
           "productos",
-          "qty",
           "preguntas"
-        ]
+        ],
+        "productos": {
+        "type": "array",
+        "element": {
+          "requires": ["producto", "qty"],
+          "optional": []
+        }
+      }
       }
     },
     "webhook": "https://digsilent.app.n8n.cloud/webhook/Modify"
