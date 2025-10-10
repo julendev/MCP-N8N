@@ -59,30 +59,37 @@
   "webhook": "https://digsilent.app.n8n.cloud/webhook/Reply"
 },
   {
-    "name": "modificar_mantenimiento",
-    "description": "Modifica una oferta de mantenimiento de un cliente con contrato vigente",
-    "requires": ["ofertas", "accion", "offerid", "conversationid"],
-      "structure": {
-      "ofertas": {
-        "requires": ["productos"],
-        "optional": [
-          "Address",
-          "modelo",
-          "TimeSubscription",
-          "Edicion",
-          "Nodos",
-          "productos",
-          "preguntas"
-        ],
-        "productos": {
+  "name": "modificar_mantenimiento",
+  "description": "Modifica una oferta de mantenimiento de un cliente con contrato vigente",
+  "requires": ["ofertas", "accion", "offerid", "conversationid"],
+  "structure": {
+    "ofertas": {
+      "requires": ["productos"],
+      "optional": [
+        "Address",
+        "modelo",
+        "TimeSubscription",
+        "Edicion",
+        "Nodos",
+        "productos",
+        "preguntas"
+      ],
+      "productos": {
         "type": "array",
         "element": {
           "requires": ["producto", "qty"],
-          "optional": []
+          "optional": [],
+          "validations": {
+            "qty": {
+              "type": "number",
+              "min": 1,
+              "error": "qty no puede ser 0 ni menor a 1"
+            }
+          }
         }
       }
-      }
-    },
-    "webhook": "https://digsilent.app.n8n.cloud/webhook/Modify"
-  }
+    }
+  },
+  "webhook": "https://digsilent.app.n8n.cloud/webhook/Modify"
+}
 ]
