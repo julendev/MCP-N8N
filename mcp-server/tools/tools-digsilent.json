@@ -61,7 +61,7 @@
   {
     "name": "modificar_mantenimiento",
     "description": "Modifica una oferta de mantenimiento de un cliente con contrato vigente",
-    "requires": ["ofertas", "offerid", "conversationid"],
+    "requires": ["ofertas", "accion", "offerid", "conversationid"],
       "structure": {
       "ofertas": {
         "requires": ["productos"],
