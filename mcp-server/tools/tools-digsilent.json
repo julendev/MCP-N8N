@@ -31,7 +31,7 @@
   "requires": ["ofertas"],
   "structure": {
     "ofertas": {
-      "requires": ["cliente", "Tipo", "Contract ID", "productos"],
+      "requires": ["Tipo", "Contract ID", "productos"],
       "optional": [
         "Shortname",
         "Address",
