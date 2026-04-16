@@ -47,17 +47,6 @@ app.get('/tools', (req, res) => {
   }
 });
 
-// 🚀 POST /run => ejecuta tool local (no depende del JSON)
-app.post('/run', async (req, res) => {
-  const { tool, input } = req.body;
-  try {
-    const toolFn = require(`./tools/${tool}.js`);
-    const output = await toolFn(input);
-    res.json({ output });
-  } catch (err) {
-    res.status(500).json({ error: `Tool ${tool} no encontrada o falló`, detalle: err.message });
-  }
-});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ MCP en http://localhost:${PORT}`));
