@@ -8,6 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ❤️ Health check (sin auth)
+app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+
 // 🔐 Auth
 app.use((req, res, next) => {
   const auth = req.headers.authorization?.trim();
